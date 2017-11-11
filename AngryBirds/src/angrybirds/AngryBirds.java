@@ -29,11 +29,11 @@ public class AngryBirds {
         Panel panel=new Panel(juego);
         
        panel.setControlador(new Controlador(juego,panel));
-       Logica logica=new Logica(juego); 
+       Logica logica=new Logica(juego,panel); 
        Marco marco=new Marco();
      
         marco.add(panel);
-        logica.moverAve(2);
+       
         marco.repaint();
         marco.setVisible(true);
     }

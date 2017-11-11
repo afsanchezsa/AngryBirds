@@ -16,7 +16,7 @@ public abstract class Personaje {
         protected int x;
         protected int y;
         protected Image imagen;
-
+        
     public Personaje(int x,int y) {
        this.x=x;
        this.y=y;
@@ -42,7 +42,7 @@ public abstract class Personaje {
         this.y = y;
     }
     
-    public abstract void mover();
+    //public abstract void mover();
         public static Image loadImage(String ruta){
         ImageIcon im=new ImageIcon(ruta);
         Image imagen=im.getImage();

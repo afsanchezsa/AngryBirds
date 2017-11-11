@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.Controlador;
+import Datos.Ave;
 import Datos.Juego;
 import Datos.Personaje;
 import java.awt.Graphics;
@@ -30,15 +31,30 @@ private Image piso1;
 private Image fondo;
 private Timer timer;
 private Controlador controlador;
+private Thread repintar;
+private Thread  salto;
     public Panel(Juego juego) {
      this.juego=   juego;
         this.setSize(600, 500);
-        this.setVisible(true);
+        
 this.personajes=new ArrayList<>();
 this.piso1=loadImage("ground_loop.png");
     this.fondo=loadImage("blue_background.png");
-    this.timer=new Timer(20,this);
-    //this.timer.start();
+    this.timer=new Timer(10,this);
+    this.timer.start();
+    /*this.repintar=new Thread(new Repint(this));
+    this.repintar.run();
+    for(Personaje p:this.personajes){
+    if(p instanceof Ave){
+    Personaje ave=p;
+    salto=new Thread(new Salto(p,0));
+    break;
+    }
+    
+    }*/
+    this.setVisible(true);
+    
+    
     }
 
    
@@ -57,7 +73,7 @@ for(int i=0;i<(Toolkit.getDefaultToolkit().getScreenSize().width/121)+1;i++){
 g.drawImage(piso1, i*121, /*500*/ Toolkit.getDefaultToolkit().getScreenSize().height-120, 121, piso1.getHeight(this), this);
 }
 for(Personaje personaje:this.juego.getPersonajes()){
-g.drawImage(personaje.getImagen(),personaje.getX(), Toolkit.getDefaultToolkit().getScreenSize().height-200, 40, 40, this);
+g.drawImage(personaje.getImagen(),personaje.getX(),personaje.getY() /*Toolkit.getDefaultToolkit().getScreenSize().height-200*/, 40, 40, this);
 
 }
 

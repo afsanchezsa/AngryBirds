@@ -5,6 +5,7 @@
  */
 package Datos;
 
+import Vista.Salto;
 import java.awt.Toolkit;
 
 /**
@@ -13,18 +14,21 @@ import java.awt.Toolkit;
  */
 public class Ave extends Personaje {
 private String Tipo;
+private Thread Salto;
     public Ave(String Tipo) {
         super(0, Toolkit.getDefaultToolkit().getScreenSize().height-200);
         this.Tipo=Tipo;
         this.imagen=loadImage(Tipo+".png");
+        Salto=null;
     }
     
     
     
 
-    @Override
-    public void mover() {
-       
+
+    public void mover(double angulo) {
+       Salto=new Thread(new Salto(this,angulo));
+       Salto.start();
     }
     
 }

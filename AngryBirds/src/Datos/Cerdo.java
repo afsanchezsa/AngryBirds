@@ -17,10 +17,10 @@ public class Cerdo extends Personaje{
         this.EstadoVivo = true;
     }
 
-    @Override
-    public void mover() {
+  
+  /*  public void mover() {
         
-    }
+    }*/
 
     public boolean getEstadoVivo() {
         return this.EstadoVivo;

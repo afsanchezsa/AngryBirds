@@ -25,7 +25,7 @@ private Logica logica;
     public Controlador(Juego juego,JPanel vista) {
        
     this.juego=juego;
-        this.logica=new Logica(this.juego);
+        this.logica=new Logica(this.juego,vista);
         this.vista=vista;
         
     
@@ -33,8 +33,12 @@ private Logica logica;
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        double angulo=Math.atan(Math.abs(600-e.getPoint().y)/e.getPoint().x);
-        this.logica.moverAve(angulo);
+        double angulo=Math.atan(Math.abs(600-e.getPoint().y)/Math.abs(e.getPoint().x));
+        double hipotenusa=Math.hypot(600-e.getPoint().y, e.getPoint().x);
+        double angulo2=Math.acos(e.getPoint().x/hipotenusa);
+        //Math.a 
+        System.out.println(Math.toDegrees(angulo2));
+        this.logica.moverAve(Math.toDegrees(angulo2));
         this.vista.repaint();
      
     }
