@@ -5,15 +5,18 @@
  */
 package Datos;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author COMPAQ
  */
 public class Ave extends Personaje {
 private String Tipo;
-    public Ave(int x, int y,String Tipo) {
-        super(x, y);
+    public Ave(String Tipo) {
+        super(0, Toolkit.getDefaultToolkit().getScreenSize().height-200);
         this.Tipo=Tipo;
+        this.imagen=loadImage(Tipo+".png");
     }
     
     

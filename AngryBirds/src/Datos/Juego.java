@@ -19,7 +19,7 @@ public class Juego {
     public Juego() {
     this.objetos=new ArrayList<>();
     this.personajes=new ArrayList<>();
-    
+    this.jugador=new Jugador("");
     }
     
 public void addJugador(String nombre){
@@ -29,8 +29,8 @@ public void addCerdo(int x, int y){
 this.personajes.add(new Cerdo(x,y));
 
 }
-public void addAve(int x, int y,String tipo){
-this.personajes.add(new Ave(x, y, tipo));
+public void addAve(String tipo){
+this.personajes.add(new Ave( tipo));
 }
 public void addObjeto(int x,int y){
 this.objetos.add(new Objeto(x,y));

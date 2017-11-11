@@ -5,6 +5,10 @@
  */
 package angrybirds;
 
+import Controlador.Controlador;
+import Datos.Juego;
+import Logica.Logica;
+import Vista.Marco;
 import Vista.Panel;
 import javax.swing.JFrame;
 
@@ -19,9 +23,18 @@ public class AngryBirds {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Panel panel=new Panel();
-        JFrame marco=new JFrame();
+        Juego juego=new Juego();
+        juego.addAve( "rojo");
+        
+        Panel panel=new Panel(juego);
+        
+       panel.setControlador(new Controlador(juego,panel));
+       Logica logica=new Logica(juego); 
+       Marco marco=new Marco();
+     
         marco.add(panel);
+        logica.moverAve(2);
+        marco.repaint();
         marco.setVisible(true);
     }
     
