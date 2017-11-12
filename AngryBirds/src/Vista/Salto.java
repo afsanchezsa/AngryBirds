@@ -32,7 +32,7 @@ t=0;
     @Override
     public void run() {
         
-for(int i=0;i<153;i++){
+for(int i=0;i<1000;i++){
         //this.Bola.aumentary(); 
      
            x=personaje.getX();
@@ -42,7 +42,7 @@ for(int i=0;i<153;i++){
           //vx=10;
           //vy=-30;
           posx=(int)(this.x+vx*t);
-           posy=(int)(this.y-vy*t+((5.0)*t*t));
+           posy=(int)(this.y-vy*t+((3.9)*t*t));
            personaje.setX(posx);
            personaje.setY(posy);
            t+=0.02;
@@ -50,7 +50,10 @@ for(int i=0;i<153;i++){
                 Thread.sleep(10);
             } catch (InterruptedException ex) {
                 System.out.println("eroor");
-            } 
+            }
+           if(personaje.getY()>=605){
+           break;
+           }
     }
     
     

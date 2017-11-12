@@ -5,6 +5,7 @@
  */
 package Datos;
 
+import Datos.Objeto.Tipo;
 import java.util.ArrayList;
 
 /**
@@ -32,8 +33,8 @@ this.personajes.add(new Cerdo(x,y));
 public void addAve(String tipo){
 this.personajes.add(new Ave( tipo));
 }
-public void addObjeto(int x,int y){
-this.objetos.add(new Objeto(x,y));
+public void addObjeto(int x,int y,Tipo tipo){
+this.objetos.add(new Objeto(x,y,tipo));
 
 }
 

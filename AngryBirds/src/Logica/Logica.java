@@ -8,6 +8,8 @@ package Logica;
 import Datos.Ave;
 import Datos.Juego;
 import Datos.Personaje;
+import Logica.Cargar;
+import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
@@ -53,7 +55,11 @@ public class Logica{
         }*/
        
         }
-   
+        public void cambiarNivel() throws FileNotFoundException{
+            Cargar cargar = new Cargar();
+            
+        }
+        
   
    } 
 

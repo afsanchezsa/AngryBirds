@@ -15,6 +15,7 @@ public class Cerdo extends Personaje{
     public Cerdo( int x, int y) {
         super(x, y);
         this.EstadoVivo = true;
+        this.imagen=loadImage("cerdo.png");
     }
 
   
