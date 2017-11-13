@@ -12,13 +12,25 @@ package Datos;
 public class Jugador {
     private int Puntaje;
     private String Nombre;
+    int intentos;
 
     public Jugador(String Nombre) {
         this.Nombre = Nombre;
         this.Puntaje=0;
+        this.intentos=0;
     }
 public void AumentarPuntaje(){
 this.Puntaje+=100;
 }
-    
+
+    public int getPuntaje() {
+        return Puntaje;
+    }
+
+    public int getIntentos() {
+        return intentos;
+    }
+    public void AumentarIntento(){
+    this.intentos++;
+    }
 }

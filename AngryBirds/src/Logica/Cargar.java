@@ -29,6 +29,7 @@ public class Cargar {
     this.imagenes.put("X", null);
     this.imagenes.put("B",loadImage("bloque.png"));
     this.imagenes.put("C",loadImage("cerdo.png"));
+    this.imagenes.put("E", loadImage("explosion.png"));
     File archivo=new File("Niveles");
     if(archivo.exists()){
     if(archivo.isDirectory()){

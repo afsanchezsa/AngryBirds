@@ -53,6 +53,7 @@ this.piso1=loadImage("ground_loop.png");
     this.timer=new Timer(10,this);
     this.timer.start();
     this.nivel=0;
+
     try {
         this.cargar=new Cargar();
         
@@ -100,7 +101,7 @@ this.juego.addObjeto((Toolkit.getDefaultToolkit().getScreenSize().width/30)*j,
     public void paintComponent(Graphics g){
 super.paintComponent(g);
 
- personajes=personajes=this.juego.getPersonajes();
+ personajes=this.juego.getPersonajes();
 for(int i=0;i<(Toolkit.getDefaultToolkit().getScreenSize().width/80)+1;i++){
 
 g.drawImage(fondo, i*80,0, 121, this.fondo.getHeight(this), this);
@@ -114,17 +115,22 @@ g.drawImage(personaje.getImagen(),personaje.getX(),personaje.getY() /*Toolkit.ge
 if(personaje instanceof Ave){
 Ave ave=(Ave)personaje;
 if(ave.verificarColisionCerdo(this.juego.getRectangulos())==true||ave.verificarColisionObjeto(this.juego.getRectangulos())==true){
- ave.parar();
+ 
+
     if(ave.verificarColisionCerdo(this.juego.getRectangulos())==true){
     this.juego.AumentarPuntaje();
+    this.juego.ganar();
+    this.juego.EliminarCerdo(ave.getX(), ave.getY());
     }else if(ave.verificarColisionObjeto(this.juego.getRectangulos())==true){
     
+     this.juego.perder();
     }  
 
+ave.parar();
 
 }
 
-}
+
 }
 
 
@@ -153,7 +159,7 @@ for(Rectangulo r:this.juego.getRectangulos()){
     
     g.drawRect(r.x, r.y, r.width, r.height);
 }
-}
+}}
 public void setControlador(Controlador controlador){
 this.controlador=controlador;
 this.addMouseListener(controlador);
@@ -178,3 +184,4 @@ this.addMouseListener(controlador);
     }
     
 }
+

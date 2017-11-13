@@ -12,6 +12,7 @@ import Logica.Cargar;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -27,12 +28,20 @@ public class Logica{
       }
     
     public void moverAve(double angulo){
+        if(this.juego.getIntentos()<=5){
         for(Personaje personaje:this.juego.getPersonajes()){
         if(personaje instanceof Ave){
         Ave ave=(Ave)personaje;
         ave.mover(angulo);
+            this.juego.AumentarIntento();
+        
         }
         }
+        }else{
+        JOptionPane.showMessageDialog(this.panel, "Se han terminado tus intentos, puntaje global= "+this.juego.getPuntaje());
+        
+        }
+        
         /*;
         int posy=personaje.getY();
         int y=(int) ((int)posy+vx*t-(4.9*t*t));

@@ -5,6 +5,8 @@
  */
 package Datos;
 
+import java.awt.Image;
+
 /**
  *
  * @author COMPAQ
@@ -26,6 +28,8 @@ public class Cerdo extends Personaje{
     public boolean getEstadoVivo() {
         return this.EstadoVivo;
     }
-    
+    public void SetImage(Image imagen){
+    this.imagen=imagen;
+    }
     
 }
