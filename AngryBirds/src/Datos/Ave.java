@@ -6,7 +6,9 @@
 package Datos;
 
 import Vista.Salto;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,5 +32,32 @@ private Thread Salto;
        Salto=new Thread(new Salto(this,angulo));
        Salto.start();
     }
+    public boolean verificarColisionObjeto(ArrayList<Rectangulo>rectangulos){
+    boolean colisiono=false;
+        for(Rectangulo r:rectangulos){
+    if(r.contains(this.x,this.y)&&r.getTipo().equals(Rectangulo.Tipo.Objeto)){
+    colisiono=true;
+    break;
+    }
+    }
+    return colisiono;
+    }
+    public void parar(){
+    this.Salto.suspend();
+    this.Salto=null;
+    this.Salto=new Thread(new Salto(this,0));
+    this.x=0;
+    this.y= Toolkit.getDefaultToolkit().getScreenSize().height-200;
+    }
+    public boolean verificarColisionCerdo(ArrayList<Rectangulo>rectangulos){
+    boolean colisiono=false;
+    for(Rectangulo r:rectangulos){
+    if(r.contains(this.x,this.y)&&r.getTipo().equals(Rectangulo.Tipo.Cerdo)){
+     colisiono=true;
+     break;
+    }
+    }  
     
+    return colisiono;
+    }
 }

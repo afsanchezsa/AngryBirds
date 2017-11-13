@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Datos.Ave;
 import Datos.Personaje;
 
 /**
@@ -46,6 +47,8 @@ for(int i=0;i<1000;i++){
            personaje.setX(posx);
            personaje.setY(posy);
            t+=0.02;
+           
+           
            try {
                 Thread.sleep(10);
             } catch (InterruptedException ex) {

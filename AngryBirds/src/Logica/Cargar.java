@@ -47,7 +47,7 @@ public class Cargar {
     
     
     String cadena=entrada.next();    
-        System.out.println(cadena);
+        
    
         
          

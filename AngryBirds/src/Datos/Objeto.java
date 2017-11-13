@@ -16,18 +16,13 @@ public class Objeto {
 private Image imagen;
 private int x;
 private int y;
-enum Tipo{
-Vertical,Horizontal;
 
-}
-private Tipo tipo;
-    public Objeto(int x, int y,Tipo tipo) {
+
+    public Objeto(int x, int y) {
         this.x = x;
         this.y = y;
-        this.tipo=tipo;
-        if(this.tipo.equals(tipo.Horizontal)){
+      
         
-        }
     }
 
     public int getX() {

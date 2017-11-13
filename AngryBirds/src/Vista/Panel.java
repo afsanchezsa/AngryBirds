@@ -9,7 +9,9 @@ import Controlador.Controlador;
 import Datos.Ave;
 import Datos.Juego;
 import Datos.Personaje;
+import Datos.Rectangulo;
 import Logica.Cargar;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -32,7 +34,7 @@ import javax.swing.Timer;
 public class Panel extends JPanel implements ActionListener {
 private int nivel;
  private   ArrayList<Personaje>personajes;
- private ArrayList<Rectangle>rectangulos;
+
     private Juego juego;
 private Image piso1;
 private Image fondo;
@@ -44,7 +46,7 @@ private Cargar cargar;
     public Panel(Juego juego) {
      this.juego=   juego;
         this.setSize(600, 500);
-        this.rectangulos=new ArrayList<>();
+       
 this.personajes=new ArrayList<>();
 this.piso1=loadImage("ground_loop.png");
     this.fondo=loadImage("blue_background.png");
@@ -53,16 +55,42 @@ this.piso1=loadImage("ground_loop.png");
     this.nivel=0;
     try {
         this.cargar=new Cargar();
+        
     } catch (FileNotFoundException ex) {
         System.out.println(ex.getMessage());
     }
+    String [][]nivel=new String[15][30];
+nivel=this.cargar.getMatrices().get(this.nivel);
+
+
+
+
+
+for(int i=0;i<15;i++){
+for(int j=0;j<30;j++){
+
+if( "C".equals(nivel[i][j])){
+
+    this.juego.addCerdo((Toolkit.getDefaultToolkit().getScreenSize().width/30)*j,
+            (Toolkit.getDefaultToolkit().getScreenSize().height/15)*i);  
+    
+}else if("B".equals(nivel[i][j])){
+this.juego.addObjeto((Toolkit.getDefaultToolkit().getScreenSize().width/30)*j,
+            (Toolkit.getDefaultToolkit().getScreenSize().height/15)*i);
+}
+    
+    
+    
+    
     
     this.setVisible(true);
+    }}
+    
     }
     
     
     
-    
+
     
     
 
@@ -83,13 +111,26 @@ g.drawImage(piso1, i*121, /*500*/ Toolkit.getDefaultToolkit().getScreenSize().he
 }
 for(Personaje personaje:this.juego.getPersonajes()){
 g.drawImage(personaje.getImagen(),personaje.getX(),personaje.getY() /*Toolkit.getDefaultToolkit().getScreenSize().height-200*/, 40, 40, this);
+if(personaje instanceof Ave){
+Ave ave=(Ave)personaje;
+if(ave.verificarColisionCerdo(this.juego.getRectangulos())==true||ave.verificarColisionObjeto(this.juego.getRectangulos())==true){
+ ave.parar();
+    if(ave.verificarColisionCerdo(this.juego.getRectangulos())==true){
+    this.juego.AumentarPuntaje();
+    }else if(ave.verificarColisionObjeto(this.juego.getRectangulos())==true){
+    
+    }  
 
+
+}
+
+}
 }
 
 
 
 
-
+g.setColor(Color.red);
 
 ArrayList<String[][]>matrices=this.cargar.getMatrices();
 String [][]nivel=new String[15][30];
@@ -102,17 +143,16 @@ nivel=matrices.get(this.nivel);
 for(int i=0;i<15;i++){
 for(int j=0;j<30;j++){
 
-if( "C".equals(nivel[i][j])){
 
-    this.juego.addCerdo((Toolkit.getDefaultToolkit().getScreenSize().width/30)*j, (Toolkit.getDefaultToolkit().getScreenSize().height)*i);  
-    
-}
 g.drawImage(cargar.getImagenes().get(nivel[i][j]),(Toolkit.getDefaultToolkit().getScreenSize().width/30)*j ,( Toolkit.getDefaultToolkit().getScreenSize().height/15)*i, Toolkit.getDefaultToolkit().getScreenSize().width/30, Toolkit.getDefaultToolkit().getScreenSize().height/15, this);
 
 }
 }
-
-
+       
+for(Rectangulo r:this.juego.getRectangulos()){
+    
+    g.drawRect(r.x, r.y, r.width, r.height);
+}
 }
 public void setControlador(Controlador controlador){
 this.controlador=controlador;

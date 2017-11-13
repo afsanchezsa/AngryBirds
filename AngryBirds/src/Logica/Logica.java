@@ -60,6 +60,8 @@ public class Logica{
             
         }
         
-  
+  public void AumentarPuntaje(){
+  this.juego.AumentarPuntaje();
+  }
    } 
 

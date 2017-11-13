@@ -17,5 +17,8 @@ public class Jugador {
         this.Nombre = Nombre;
         this.Puntaje=0;
     }
+public void AumentarPuntaje(){
+this.Puntaje+=100;
+}
     
 }
