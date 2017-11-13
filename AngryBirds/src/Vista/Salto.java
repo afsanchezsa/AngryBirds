@@ -7,6 +7,7 @@ package Vista;
 
 import Datos.Ave;
 import Datos.Personaje;
+import java.awt.Toolkit;
 
 /**
  *
@@ -55,6 +56,8 @@ for(int i=0;i<1000;i++){
                 System.out.println("eroor");
             }
            if(personaje.getY()>=605){
+           personaje.setX(0);
+           personaje.setY(Toolkit.getDefaultToolkit().getScreenSize().height-200);   
            break;
            }
     }
